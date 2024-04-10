@@ -1,40 +1,39 @@
+import Image from 'next/image'
+
+import homeImage from '@/assets/images/0.jpg'
+
 const App = () => {
   return (
-    <div className="bg-gradient-to-b from-violet-600/[.15] via-transparent">
-      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-8">
-        <div className="max-w-3xl text-center mx-auto">
-          <h1 className="block font-medium text-gray-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-            Single solution to all of your problems.
+    <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 lg:my-8">
+      <div className="grid lg:grid-cols-7 lg:gap-x-8 xl:gap-x-12 lg:items-center">
+        <div className="lg:col-span-3">
+          <h1 className="block text-3xl font-bold text-gray-800 sm:text-4xl md:text-5xl lg:text-6xl dark:text-white">
+            Smart Maker
           </h1>
-        </div>
-
-        <div className="max-w-3xl text-center mx-auto">
-          <p className="text-lg text-gray-400">
-            SmartMaker is a Nagpur based company that offers solution to your electrical needs.
+          <p className="mt-3 text-lg text-gray-800 dark:text-gray-400">
+            Introducing a smarter and better way for all your electrical needs
           </p>
-        </div>
-
-        <div className="text-center">
-          <a
-            className="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-blue-600 to-violet-600 shadow-lg shadow-transparent hover:shadow-blue-700/50 border border-transparent text-white text-sm font-medium rounded-full focus:outline-none focus:ring-1 focus:ring-gray-600 py-3 px-6 dark:focus:ring-offset-gray-800"
-            href="#"
-          >
-            Browse Catalog
-            <svg
-              className="flex-shrink-0 size-4"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+          <div className="mt-5 lg:mt-8 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
+            <div className="w-full sm:w-auto">
+              <label htmlFor="hero-input" className="sr-only">
+                Search
+              </label>
+              <input
+                type="text"
+                className="py-3 px-4 block w-full xl:min-w-72 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                placeholder="Enter email"
+              />
+            </div>
+            <a
+              className="w-full sm:w-auto py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+              href="#"
             >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
-          </a>
+              Request demo
+            </a>
+          </div>
+        </div>
+        <div className="hidden lg:block lg:col-span-4 mt-10 lg:mt-0">
+          <Image className="ounded-xl" src={homeImage} width={400} alt="Image Description" />
         </div>
       </div>
     </div>
