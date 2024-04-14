@@ -5,7 +5,7 @@ import Services from '@/components/organisms/services'
 const App = () => {
   return (
     <div className="h-full">
-      <div className="flex flex-col mx-auto size-full">
+      <div className="flex flex-col size-full w-auto mx-11">
         <header className="mb-auto flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm py-4">
           <NavBar />
         </header>
