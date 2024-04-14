@@ -5,7 +5,11 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Smart Maker'
+  title: 'Smart Maker',
+  icons: {
+    icon: '/images/favicon.ico',
+    apple: '/images/apple-touch-icon.png'
+  }
 }
 
 export default function RootLayout({
