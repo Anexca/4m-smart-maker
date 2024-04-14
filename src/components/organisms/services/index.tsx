@@ -2,6 +2,7 @@ import React from 'react'
 
 import ServiceCard from '@/components/molecules/service-card'
 import { ServicesData } from '@/constants/services'
+import { IServiceData } from '@/types/constants'
 
 const Services = () => {
   return (
