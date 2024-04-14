@@ -1,10 +1,11 @@
 import Footer from '@/components/molecules/footer'
 import NavBar from '@/components/molecules/navbar'
+import Services from '@/components/organisms/services'
 
 const App = () => {
   return (
     <div className="h-full">
-      <div className="max-w-[50rem] flex flex-col mx-auto size-full">
+      <div className="flex flex-col mx-auto size-full">
         <header className="mb-auto flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm py-4">
           <NavBar />
         </header>
@@ -36,6 +37,9 @@ const App = () => {
                 </svg>
                 Our Services
               </a>
+            </div>
+            <div>
+              <Services />
             </div>
           </div>
         </main>
