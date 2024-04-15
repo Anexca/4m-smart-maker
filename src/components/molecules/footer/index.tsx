@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 
 import logoImage from '@/assets/images/logo.jpg'
+import Divider from '@/components/atoms/divider'
 
 const Footer = () => {
   return (
@@ -30,7 +31,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <hr className="my-6 sm:mx-auto border-gray-700 lg:my-8" />
+        <Divider />
         <span className="block text-sm text-center text-gray-400">
           © {new Date().getFullYear()} 4M
         </span>

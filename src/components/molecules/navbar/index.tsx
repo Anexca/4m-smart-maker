@@ -64,14 +64,14 @@ const NavBar = () => {
           <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
             <a
               className="font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-600"
-              href="#"
+              href="#services"
               aria-current="page"
             >
               Services
             </a>
             <a
               className="font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-600"
-              href="#"
+              href="#contact"
             >
               Contact Us
             </a>
