@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="rounded-lg shadow m-4 w-full mt-auto">
       <div className="max-w-screen-xl mx-auto p-4 md:py-8">
-        <div className="sm:flex sm:items-center sm:justify-between">
+        <div className="flex items-center justify-between flex-col lg:flex-row">
           <a
             href="https://flowbite.com/"
             className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
@@ -31,7 +31,7 @@ const Footer = () => {
           </ul>
         </div>
         <hr className="my-6 sm:mx-auto border-gray-700 lg:my-8" />
-        <span className="block text-sm sm:text-center text-gray-400">
+        <span className="block text-sm text-center text-gray-400">
           © {new Date().getFullYear()} 4M
         </span>
       </div>
