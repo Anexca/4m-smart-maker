@@ -35,8 +35,10 @@ const Contact = () => {
                   })}
                 </ul>
               </div>
-              <div className="card h-fit max-w-6xl p-5 md:p-12" id="form">
-                <h2 className="mb-4 text-2xl font-bold text-white">Ready to Get Started?</h2>
+              <div className="card h-fit lg:max-w-6xl lg:p-5" id="form">
+                <h2 className="mb-4 text-2xl font-bold text-center lg:text-left text-white">
+                  Feel free to contact us anytime.
+                </h2>
                 <ContactForm />
               </div>
             </div>
