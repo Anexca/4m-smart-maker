@@ -10,7 +10,7 @@ const NavBar = () => {
         <div className="flex items-center justify-between">
           <a
             className="flex-none text-xl font-semibold text-white focus:outline-none focus:ring-1 focus:ring-gray-600"
-            href="#"
+            href="/"
             aria-label="Brand"
           >
             4M
