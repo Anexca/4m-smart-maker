@@ -17,7 +17,7 @@ const Contact = () => {
                 Get in Touch
               </h2>
               <p className="mx-auto mt-4 max-w-3xl text-xl  text-slate-400">
-                In hac habitasse platea dictumst
+                We Provide Excellent Services
               </p>
             </div>
           </div>
@@ -25,9 +25,9 @@ const Contact = () => {
             <div className="grid md:grid-cols-2">
               <div className="h-full pr-6">
                 <p className="mt-3 mb-12 text-lg text-slate-400">
-                  ClassName aptent taciti sociosqu ad litora torquent per conubia nostra, per
-                  inceptos himenaeos. Duis nec ipsum orci. Ut scelerisque sagittis ante, ac
-                  tincidunt sem venenatis ut.
+                  For all your electrical service inquiries and questions, the Smart Maker team is
+                  here to assist you promptly and efficiently. Feel free to reach out to us, and
+                  we'll ensure your needs are addressed with professionalism and care.
                 </p>
                 <ul className="mb-6 md:mb-0">
                   {ContactCardsData.map((contact) => {
