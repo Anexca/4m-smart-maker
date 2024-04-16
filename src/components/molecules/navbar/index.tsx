@@ -71,7 +71,7 @@ const NavBar = () => {
             </a>
             <a
               className="font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-600"
-              href="#contact"
+              href="/contact"
             >
               Contact Us
             </a>

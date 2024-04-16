@@ -9,7 +9,7 @@ import { ContactCardsData } from '@/constants/contact'
 const Contact = () => {
   return (
     <Layout>
-      <section className="" id="contact">
+      <section id="contact">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="mb-4">
             <div className="mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12">
@@ -27,7 +27,7 @@ const Contact = () => {
                 <p className="mt-3 mb-12 text-lg text-slate-400">
                   For all your electrical service inquiries and questions, the Smart Maker team is
                   here to assist you promptly and efficiently. Feel free to reach out to us, and
-                  we'll ensure your needs are addressed with professionalism and care.
+                  we&apos;ll ensure your needs are addressed with professionalism and care.
                 </p>
                 <ul className="mb-6 md:mb-0">
                   {ContactCardsData.map((contact) => {

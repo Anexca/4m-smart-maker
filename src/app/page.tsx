@@ -1,6 +1,4 @@
 import Layout from '@/components/layout'
-import Footer from '@/components/molecules/footer'
-import NavBar from '@/components/molecules/navbar'
 import Services from '@/components/organisms/services'
 
 const App = () => {
