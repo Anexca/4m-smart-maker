@@ -1,4 +1,6 @@
 import React from 'react'
+import { GiHamburgerMenu } from 'react-icons/gi'
+import { MdClose } from 'react-icons/md'
 
 const NavBar = () => {
   return (
@@ -23,37 +25,8 @@ const NavBar = () => {
               aria-controls="navbar-collapse-with-animation"
               aria-label="Toggle navigation"
             >
-              <svg
-                className="hs-collapse-open:hidden flex-shrink-0 size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="3" x2="21" y1="6" y2="6" />
-                <line x1="3" x2="21" y1="12" y2="12" />
-                <line x1="3" x2="21" y1="18" y2="18" />
-              </svg>
-              <svg
-                className="hs-collapse-open:block hidden flex-shrink-0 size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M18 6 6 18" />
-                <path d="m6 6 12 12" />
-              </svg>
+              <GiHamburgerMenu className="hs-collapse-open:hidden" />
+              <MdClose className="hs-collapse-open:block hidden" />
             </button>
           </div>
         </div>
@@ -64,7 +37,7 @@ const NavBar = () => {
           <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
             <a
               className="font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-600"
-              href="#services"
+              href="/"
               aria-current="page"
             >
               Services
