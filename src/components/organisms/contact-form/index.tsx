@@ -1,12 +1,16 @@
 'use client'
 
+import { isEmail } from '@teteu/utils'
+import clsx from 'clsx'
 import React, { useState } from 'react'
+import { IoMdInformationCircleOutline } from 'react-icons/io'
 
 import { emailClient } from '@/client/email'
 import { IContactForm } from '@/types/components/organisms'
 import { IEmailParams } from '@/types/models/email'
 
 const ContactForm = () => {
+  const [_isEmailValid, setIsEmailValid] = useState(true)
   const [_contactFormDetails, setContactFormDetails] = useState<IContactForm>({
     name: '',
     email: '',
@@ -20,7 +24,21 @@ const ContactForm = () => {
       to_name: _contactFormDetails.name
     }
 
+    if (!isEmail(emailObject.to_email)) {
+      setIsEmailValid(false)
+      return
+    }
+
+    resetContactForm()
     await emailClient.sendEmail(emailObject)
+  }
+
+  const resetContactForm = () => {
+    setContactFormDetails({
+      name: '',
+      email: '',
+      message: ''
+    })
   }
 
   return (
@@ -39,18 +57,36 @@ const ContactForm = () => {
               className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md text-gray-900 sm:mb-0"
             />
           </div>
-          <div className="mx-0 mb-1 sm:mb-4">
+          <div>
             <label htmlFor="email" className="pb-1 text-xs uppercase tracking-wider"></label>
-            <input
-              type="email"
-              onChange={(e) =>
-                setContactFormDetails({ ..._contactFormDetails, email: e.target.value })
-              }
-              value={_contactFormDetails.email}
-              autoComplete="email"
-              placeholder="Your email address"
-              className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md text-gray-900 sm:mb-0"
-            />
+            <div className="relative">
+              <input
+                type="email"
+                onChange={(e) => {
+                  setIsEmailValid(true)
+                  setContactFormDetails({ ..._contactFormDetails, email: e.target.value })
+                }}
+                value={_contactFormDetails.email}
+                autoComplete="email"
+                placeholder="Your email address"
+                className={clsx(
+                  'mb-2 w-full rounded-md border  py-2 pl-2 pr-4 shadow-md text-gray-900 sm:mb-0',
+                  { 'border-gray-400': _isEmailValid, 'border-red-700': !_isEmailValid }
+                )}
+                aria-describedby="hs-validation-name-error-helper"
+              />
+              <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
+                <IoMdInformationCircleOutline
+                  className={clsx('flex-shrink-0 size-6 text-red-500', { hidden: _isEmailValid })}
+                />
+              </div>
+            </div>
+            <p
+              className={clsx('text-sm text-red-600 my-2', { hidden: _isEmailValid })}
+              id="hs-validation-name-error-helper"
+            >
+              Please enter a valid email address.
+            </p>
           </div>
         </div>
         <div className="mx-0 mb-1 sm:mb-4">
