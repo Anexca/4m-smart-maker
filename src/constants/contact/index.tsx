@@ -22,7 +22,7 @@ export const ContactCardsData: IContactCardData[] = [
     id: generateRandomId(),
     title: 'Working hours',
     lineOne: 'Monday - Friday: 08:00 - 20:00',
-    lineTwo: 'Saturday &amp; Sunday: 08:00 - 18:00',
+    lineTwo: 'Saturday & Sunday: 08:00 - 18:00',
     icon: <FaRegClock size="1.2rem" />
   }
 ]
