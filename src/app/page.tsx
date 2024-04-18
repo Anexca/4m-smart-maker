@@ -1,5 +1,15 @@
-import Layout from '@/components/layout'
-import Services from '@/components/organisms/services'
+'use client'
+
+import dynamic from 'next/dynamic'
+
+import LoadingScreen from '@/components/molecules/loading-screen'
+
+const Layout = dynamic(() => import('@/components/layout'), {
+  loading: () => <LoadingScreen />
+})
+const Services = dynamic(() => import('@/components/organisms/services'), {
+  loading: () => <LoadingScreen />
+})
 
 const App = () => {
   return (

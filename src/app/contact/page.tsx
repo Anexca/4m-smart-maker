@@ -1,10 +1,22 @@
-import React from 'react'
-import { FaLocationDot, FaPhoneVolume, FaRegClock } from 'react-icons/fa6'
+'use client'
 
-import Layout from '@/components/layout'
-import ContactCard from '@/components/molecules/contact-card'
-import ContactForm from '@/components/organisms/contact-form'
+import dynamic from 'next/dynamic'
+import React from 'react'
+
+import LoadingScreen from '@/components/molecules/loading-screen'
 import { ContactCardsData } from '@/constants/contact'
+
+const Layout = dynamic(() => import('@/components/layout'), {
+  loading: () => <LoadingScreen />
+})
+
+const ContactCard = dynamic(() => import('@/components/molecules/contact-card'), {
+  loading: () => <LoadingScreen />
+})
+
+const ContactForm = dynamic(() => import('@/components/organisms/contact-form'), {
+  loading: () => <LoadingScreen />
+})
 
 const Contact = () => {
   return (

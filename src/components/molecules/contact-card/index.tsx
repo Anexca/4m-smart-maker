@@ -1,5 +1,6 @@
+'use client'
+
 import { FC } from 'react'
-import { FaLocationDot } from 'react-icons/fa6'
 
 import { IContactCardProps } from '@/types/components/molecules'
 
