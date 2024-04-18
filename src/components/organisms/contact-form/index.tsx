@@ -10,7 +10,11 @@ import { IContactForm } from '@/types/components/organisms'
 import { IEmailParams } from '@/types/models/email'
 
 const ContactForm = () => {
-  const [_isEmailValid, setIsEmailValid] = useState(true)
+  const [_isFormValid, setIsFormValid] = useState({
+    name: true,
+    email: true,
+    message: true
+  })
   const [_contactFormDetails, setContactFormDetails] = useState<IContactForm>({
     name: '',
     email: '',
@@ -24,8 +28,7 @@ const ContactForm = () => {
       to_name: _contactFormDetails.name
     }
 
-    if (!isEmail(emailObject.to_email)) {
-      setIsEmailValid(false)
+    if (!validateForm()) {
       return
     }
 
@@ -41,21 +44,75 @@ const ContactForm = () => {
     })
   }
 
+  const validateForm = () => {
+    let isValid = true
+
+    if (!isEmail(_contactFormDetails.email)) {
+      setIsFormValid((prev) => {
+        return { ...prev, email: false }
+      })
+      isValid = false
+    }
+
+    if (!_contactFormDetails.name?.trim()) {
+      setIsFormValid((prev) => {
+        return { ...prev, name: false }
+      })
+      isValid = false
+    }
+
+    const symbolRegex = /[^\w\s]/
+
+    if (
+      !_contactFormDetails.message?.trim() ||
+      _contactFormDetails.message.replace(symbolRegex, '').trim().length <= 10
+    ) {
+      setIsFormValid((prev) => {
+        return { ...prev, message: false }
+      })
+      isValid = false
+    }
+
+    return isValid
+  }
+
   return (
     <div id="contactForm">
       <div className="mb-6">
         <div className="mx-0 mb-1 sm:mb-4">
           <div className="mx-0 mb-1 sm:mb-4">
             <label htmlFor="name" className="pb-1 text-xs uppercase tracking-wider"></label>
-            <input
-              value={_contactFormDetails.name}
-              onChange={(e) =>
-                setContactFormDetails({ ..._contactFormDetails, name: e.target.value })
-              }
-              autoComplete="given-name"
-              placeholder="Your name"
-              className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md text-gray-900 sm:mb-0"
-            />
+            <div className="relative">
+              <input
+                value={_contactFormDetails.name}
+                onChange={(e) => {
+                  setIsFormValid({ ..._isFormValid, name: true })
+                  setContactFormDetails({ ..._contactFormDetails, name: e.target.value })
+                }}
+                autoComplete="given-name"
+                placeholder="Your name"
+                className={clsx(
+                  'mb-2 w-full rounded-md border  py-2 pl-2 pr-4 shadow-md text-gray-900 sm:mb-0',
+                  {
+                    'border-gray-400': _isFormValid.name,
+                    'border-red-700': !_isFormValid.name
+                  }
+                )}
+              />
+              <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
+                <IoMdInformationCircleOutline
+                  className={clsx('flex-shrink-0 size-6 text-red-500', {
+                    hidden: _isFormValid.name
+                  })}
+                />
+              </div>
+            </div>
+            <p
+              className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.name })}
+              id="hs-validation-name-error-helper"
+            >
+              Please enter a valid name.
+            </p>
           </div>
           <div>
             <label htmlFor="email" className="pb-1 text-xs uppercase tracking-wider"></label>
@@ -63,7 +120,7 @@ const ContactForm = () => {
               <input
                 type="email"
                 onChange={(e) => {
-                  setIsEmailValid(true)
+                  setIsFormValid({ ..._isFormValid, email: true })
                   setContactFormDetails({ ..._contactFormDetails, email: e.target.value })
                 }}
                 value={_contactFormDetails.email}
@@ -71,18 +128,20 @@ const ContactForm = () => {
                 placeholder="Your email address"
                 className={clsx(
                   'mb-2 w-full rounded-md border  py-2 pl-2 pr-4 shadow-md text-gray-900 sm:mb-0',
-                  { 'border-gray-400': _isEmailValid, 'border-red-700': !_isEmailValid }
+                  { 'border-gray-400': _isFormValid.email, 'border-red-700': !_isFormValid.email }
                 )}
                 aria-describedby="hs-validation-name-error-helper"
               />
               <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
                 <IoMdInformationCircleOutline
-                  className={clsx('flex-shrink-0 size-6 text-red-500', { hidden: _isEmailValid })}
+                  className={clsx('flex-shrink-0 size-6 text-red-500', {
+                    hidden: _isFormValid.email
+                  })}
                 />
               </div>
             </div>
             <p
-              className={clsx('text-sm text-red-600 my-2', { hidden: _isEmailValid })}
+              className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.email })}
               id="hs-validation-name-error-helper"
             >
               Please enter a valid email address.
@@ -91,17 +150,36 @@ const ContactForm = () => {
         </div>
         <div className="mx-0 mb-1 sm:mb-4">
           <label htmlFor="textarea" className="pb-1 text-xs uppercase tracking-wider"></label>
-          <textarea
-            value={_contactFormDetails.message}
-            name="textarea"
-            onChange={(e) =>
-              setContactFormDetails({ ..._contactFormDetails, message: e.target.value })
-            }
-            cols={30}
-            rows={5}
-            placeholder="Write your message..."
-            className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md text-gray-900 sm:mb-0"
-          />
+          <div className="relative">
+            <textarea
+              value={_contactFormDetails.message}
+              name="textarea"
+              onChange={(e) => {
+                setIsFormValid({ ..._isFormValid, message: true })
+                setContactFormDetails({ ..._contactFormDetails, message: e.target.value })
+              }}
+              cols={30}
+              rows={5}
+              placeholder="Write your message..."
+              className={clsx(
+                'mb-2 w-full rounded-md border  py-2 pl-2 pr-4 shadow-md text-gray-900 sm:mb-0',
+                { 'border-gray-400': _isFormValid.message, 'border-red-700': !_isFormValid.message }
+              )}
+            />
+            <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
+              <IoMdInformationCircleOutline
+                className={clsx('flex-shrink-0 size-6 text-red-500', {
+                  hidden: _isFormValid.message
+                })}
+              />
+            </div>
+          </div>
+          <p
+            className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.message })}
+            id="hs-validation-name-error-helper"
+          >
+            Please enter a valid message.
+          </p>
         </div>
       </div>
       <div className="text-center">
