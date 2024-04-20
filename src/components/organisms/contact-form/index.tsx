@@ -2,7 +2,9 @@
 
 import { isEmail } from '@teteu/utils'
 import clsx from 'clsx'
+import { Button } from 'flowbite-react'
 import React, { useState } from 'react'
+import { AiOutlineLoading } from 'react-icons/ai'
 import { IoMdInformationCircleOutline } from 'react-icons/io'
 
 import { emailClient } from '@/client/email'
@@ -107,10 +109,7 @@ const ContactForm = () => {
                 />
               </div>
             </div>
-            <p
-              className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.name })}
-              id="hs-validation-name-error-helper"
-            >
+            <p className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.name })}>
               Please enter a valid name.
             </p>
           </div>
@@ -182,13 +181,13 @@ const ContactForm = () => {
           </p>
         </div>
       </div>
-      <div className="text-center">
-        <button
+      <div className="flex flex-row justify-between">
+        <Button
+          size="sm"
+          isProcessing={false}
           onClick={handleSendClick}
           className="w-full bg-blue-800 text-white px-6 py-3 font-xl rounded-md sm:mb-0"
-        >
-          Send Message
-        </button>
+        ></Button>
       </div>
     </div>
   )
