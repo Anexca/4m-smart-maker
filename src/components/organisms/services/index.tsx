@@ -3,7 +3,6 @@ import React from 'react'
 import Divider from '@/components/atoms/divider'
 import ServiceCard from '@/components/molecules/service-card'
 import { ServicesData } from '@/constants/services'
-import { IServiceData } from '@/types/constants'
 
 const Services = () => {
   return (
