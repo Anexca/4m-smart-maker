@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { MdOutlineElectricBolt } from 'react-icons/md'
 
 import { IServiceCardProps } from '@/types/components/molecules'
 

@@ -11,9 +11,9 @@ const Footer = () => {
         <div className="flex items-center justify-between flex-col lg:flex-row">
           <a href="/" className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
             <Image src={logoImage} className="h-10 w-16" width={100} height={100} alt="4M Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
+            <p className="self-center text-2xl font-semibold whitespace-nowrap text-white">
               4M Smart Maker
-            </span>
+            </p>
           </a>
           <ul className="flex flex-wrap items-center mb-6 text-sm font-medium m:mb-0 text-gray-400">
             <li>
@@ -29,9 +29,7 @@ const Footer = () => {
           </ul>
         </div>
         <Divider />
-        <span className="block text-sm text-center text-gray-400">
-          © {new Date().getFullYear()} 4M
-        </span>
+        <p className="block text-sm text-center text-gray-400">© {new Date().getFullYear()} 4M</p>
       </div>
     </footer>
   )

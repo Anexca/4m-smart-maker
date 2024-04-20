@@ -6,10 +6,15 @@ import React, { useState } from 'react'
 import { IoMdInformationCircleOutline } from 'react-icons/io'
 
 import { emailClient } from '@/client/email'
+import Button from '@/components/atoms/button'
+import { useNotification } from '@/hooks/use-notification'
 import { IContactForm } from '@/types/components/organisms'
 import { IEmailParams } from '@/types/models/email'
 
 const ContactForm = () => {
+  const { showNotification } = useNotification()
+
+  const [_isSendingMessage, setIsSendingMessage] = useState(false)
   const [_isFormValid, setIsFormValid] = useState({
     name: true,
     email: true,
@@ -33,7 +38,16 @@ const ContactForm = () => {
     }
 
     resetContactForm()
-    await emailClient.sendEmail(emailObject)
+
+    try {
+      setIsSendingMessage(true)
+      await emailClient.sendEmail(emailObject)
+      showNotification('Message Sent Successfully!', 'success')
+    } catch (error) {
+      showNotification('Something went wrong, please try again.', 'error')
+    } finally {
+      setIsSendingMessage(false)
+    }
   }
 
   const resetContactForm = () => {
@@ -107,10 +121,7 @@ const ContactForm = () => {
                 />
               </div>
             </div>
-            <p
-              className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.name })}
-              id="hs-validation-name-error-helper"
-            >
+            <p className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.name })}>
               Please enter a valid name.
             </p>
           </div>
@@ -140,10 +151,7 @@ const ContactForm = () => {
                 />
               </div>
             </div>
-            <p
-              className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.email })}
-              id="hs-validation-name-error-helper"
-            >
+            <p className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.email })}>
               Please enter a valid email address.
             </p>
           </div>
@@ -174,21 +182,20 @@ const ContactForm = () => {
               />
             </div>
           </div>
-          <p
-            className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.message })}
-            id="hs-validation-name-error-helper"
-          >
+          <p className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.message })}>
             Please enter a valid message.
           </p>
         </div>
       </div>
-      <div className="text-center">
-        <button
+      <div className="flex flex-row justify-between">
+        <Button
           onClick={handleSendClick}
+          loading={_isSendingMessage}
+          loadingText="Sending Message"
           className="w-full bg-blue-800 text-white px-6 py-3 font-xl rounded-md sm:mb-0"
         >
           Send Message
-        </button>
+        </Button>
       </div>
     </div>
   )
