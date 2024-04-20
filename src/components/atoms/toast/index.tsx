@@ -39,8 +39,6 @@ const Toast: FC<IToastProps> = ({
   }
 
   const handleClose = () => {
-    console.log('aa')
-
     setShowToast(false)
     onClose?.()
   }

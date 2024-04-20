@@ -1,3 +1,26 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "env": { "browser": true, "es2020": true },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "next/core-web-vitals"
+  ],
+  "ignorePatterns": [".next", ".eslintrc.json"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "react-refresh/only-export-components": ["warn", { "allowConstantExport": true }],
+    "no-console": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-empty": "warn",
+    "@typescript-eslint/no-unused-vars": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {} // this loads <rootdir>/tsconfig.json to ESLint
+    }
+  },
+  "plugins": ["react-refresh", "unused-imports"]
 }
