@@ -4,7 +4,7 @@ import { MdClose } from 'react-icons/md'
 
 const NavBar = () => {
   return (
-    <div className="mb-auto flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm py-4">
+    <div className="mb-auto flex flex-wrap sm:justify-start sm:flex-nowrap w-full text-sm py-4">
       <nav
         className="w-full px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
         aria-label="Global"
@@ -35,17 +35,10 @@ const NavBar = () => {
           className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block"
         >
           <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
-            <a
-              className="font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-600"
-              href="/"
-              aria-current="page"
-            >
+            <a className="font-medium text-gray-400 hover:underline" href="/" aria-current="page">
               Services
             </a>
-            <a
-              className="font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-600"
-              href="/contact"
-            >
+            <a className="font-medium text-gray-400 hover:underline" href="/contact">
               Contact Us
             </a>
           </div>

@@ -7,22 +7,12 @@ import { RxCross2 } from 'react-icons/rx'
 
 import { IToastProps, IToastTypes } from '@/types/components/atoms'
 
-const Toast: FC<IToastProps> = ({
-  show = false,
-  message,
-  onClose,
-  type = 'info',
-  duration = 3000
-}) => {
-  const [_showToast, setShowToast] = useState(show)
+const Toast: FC<IToastProps> = ({ show = false, message, onClose, type = 'info' }) => {
+  const [_showToast, setShowToast] = useState(false)
 
   useEffect(() => {
-    if (_showToast) {
-      setTimeout(() => {
-        setShowToast(false)
-      }, duration)
-    }
-  }, [_showToast])
+    setShowToast(show)
+  }, [show])
 
   const toastColors: Record<IToastTypes, string> = {
     info: 'bg-blue-800 text-blue-200',
@@ -50,7 +40,7 @@ const Toast: FC<IToastProps> = ({
         className={clsx(
           'fixed top-5 right-5 flex items-center w-full max-w-xs p-4 mb-4 rounded-lg shadow z-10 transition-all duration-500',
           toastColors[type],
-          { 'opacity-0': !_showToast }
+          { 'opacity-0 pointer-events-none': !_showToast }
         )}
         role="alert"
       >
@@ -60,7 +50,7 @@ const Toast: FC<IToastProps> = ({
           )}
         >
           {toastIcons[type]}
-          <span className="sr-only">Check icon</span>
+          <p className="sr-only">Check icon</p>
         </div>
         <div className="ms-3 text-sm font-normal">{message}</div>
         <button
@@ -68,7 +58,7 @@ const Toast: FC<IToastProps> = ({
           onClick={handleClose}
           className="ms-auto -mx-1.5 -my-1.5 inline-flex items-center justify-center h-8 w-8"
         >
-          <span className="sr-only">Close</span>
+          <p className="sr-only">Close</p>
           <RxCross2 />
         </button>
       </div>

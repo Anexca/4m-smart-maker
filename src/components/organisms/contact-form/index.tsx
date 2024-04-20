@@ -7,10 +7,13 @@ import { IoMdInformationCircleOutline } from 'react-icons/io'
 
 import { emailClient } from '@/client/email'
 import Button from '@/components/atoms/button'
+import { useNotification } from '@/hooks/use-notification'
 import { IContactForm } from '@/types/components/organisms'
 import { IEmailParams } from '@/types/models/email'
 
 const ContactForm = () => {
+  const { showNotification } = useNotification()
+
   const [_isSendingMessage, setIsSendingMessage] = useState(false)
   const [_isFormValid, setIsFormValid] = useState({
     name: true,
@@ -35,10 +38,13 @@ const ContactForm = () => {
     }
 
     resetContactForm()
+
     try {
       setIsSendingMessage(true)
       await emailClient.sendEmail(emailObject)
+      showNotification('Message Sent Successfully!', 'success')
     } catch (error) {
+      showNotification('Something went wrong, please try again.', 'error')
     } finally {
       setIsSendingMessage(false)
     }
@@ -145,10 +151,7 @@ const ContactForm = () => {
                 />
               </div>
             </div>
-            <p
-              className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.email })}
-              id="hs-validation-name-error-helper"
-            >
+            <p className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.email })}>
               Please enter a valid email address.
             </p>
           </div>
@@ -179,10 +182,7 @@ const ContactForm = () => {
               />
             </div>
           </div>
-          <p
-            className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.message })}
-            id="hs-validation-name-error-helper"
-          >
+          <p className={clsx('text-sm text-red-600 my-2', { hidden: _isFormValid.message })}>
             Please enter a valid message.
           </p>
         </div>
