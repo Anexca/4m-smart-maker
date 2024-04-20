@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic'
 
+import Toast from '@/components/atoms/toast'
 import LoadingScreen from '@/components/molecules/loading-screen'
 
 const Layout = dynamic(() => import('@/components/layout'), {

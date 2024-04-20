@@ -5,3 +5,13 @@ export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean
   loadingText?: string | ReactNode
 }
+
+export type IToastTypes = 'success' | 'error' | 'info' | 'warning'
+
+export interface IToastProps {
+  show?: boolean
+  message: string | ReactNode
+  onClose?: () => void
+  type?: IToastTypes
+  duration?: number
+}
