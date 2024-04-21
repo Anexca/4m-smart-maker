@@ -15,7 +15,7 @@ const NavBar = () => {
             href="/"
             aria-label="Brand"
           >
-            4M
+            House Detan
           </a>
           <div className="sm:hidden">
             <button

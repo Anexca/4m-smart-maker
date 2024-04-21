@@ -7,7 +7,7 @@ import PrelineScript from '@/components/molecules/preline'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Smart Maker',
+  title: 'House Detan',
   icons: {
     icon: '/images/favicon.ico',
     apple: '/images/apple-touch-icon.png'

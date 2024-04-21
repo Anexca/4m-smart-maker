@@ -39,7 +39,7 @@ const Contact = () => {
               <div className="grid md:grid-cols-2">
                 <div className="h-full pr-6">
                   <p className="mt-3 mb-12 text-lg text-slate-400">
-                    For all your electrical service inquiries and questions, the Smart Maker team is
+                    For all your electrical service inquiries and questions, the House Detan team is
                     here to assist you promptly and efficiently. Feel free to reach out to us, and
                     we&apos;ll ensure your needs are addressed with professionalism and care.
                   </p>

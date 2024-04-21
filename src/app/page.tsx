@@ -17,7 +17,7 @@ const App = () => {
     <NotificationProvider>
       <Layout>
         <div className="text-center py-10 px-4 sm:px-6 lg:px-8">
-          <h1 className="block text-2xl font-bold text-white sm:text-4xl">Smart Maker</h1>
+          <h1 className="block text-2xl font-bold text-white sm:text-4xl">House Detan</h1>
           <p className="mt-3 text-lg text-gray-300">
             Your One-Stop Solution for All Household Needs.
           </p>

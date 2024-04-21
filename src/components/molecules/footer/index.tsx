@@ -12,7 +12,7 @@ const Footer = () => {
           <a href="/" className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
             <Image src={logoImage} className="h-10 w-16" width={100} height={100} alt="4M Logo" />
             <p className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-              4M Smart Maker
+              House Detan
             </p>
           </a>
           <ul className="flex flex-wrap items-center mb-6 text-sm font-medium m:mb-0 text-gray-400">
