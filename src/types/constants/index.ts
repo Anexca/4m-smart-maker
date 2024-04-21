@@ -5,6 +5,7 @@ export interface IServiceData {
   label: string
   description: string
   icon: ReactNode
+  type: string
 }
 
 export interface IContactCardData {
